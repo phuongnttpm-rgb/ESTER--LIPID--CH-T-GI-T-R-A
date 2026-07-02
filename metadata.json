@@ -1,0 +1,6 @@
+{
+  "name": "Đấu Trường Hoá Học 12 - Xà Phòng Và Chất Giặt Rửa",
+  "description": "Trò chơi tương tác giáo dục môn Hoá học lớp 12 về Ester, Lipid và Chất giặt rửa, tối ưu cho máy chiếu lớp học.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
