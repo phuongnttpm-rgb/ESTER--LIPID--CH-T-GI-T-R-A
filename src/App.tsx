@@ -488,7 +488,13 @@ export default function App() {
               </div>
 
               {/* Answer options container - responsive 1-col on mobile, 2-col on desktop, scrollable for small screens */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-4 w-full max-h-[250px] sm:max-h-[340px] md:max-h-none overflow-y-auto pr-1.5 py-1 border border-transparent hover:border-slate-100 rounded-xl transition-colors">
+              <div
+                className={`grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 w-full overflow-y-auto pr-1.5 py-1 border border-transparent hover:border-slate-100 rounded-xl transition-all custom-scrollbar ${
+                  (playQuestions[currentQuestionIndex]?.question || "").length > 100
+                    ? "max-h-[160px] sm:max-h-[260px] md:max-h-none"
+                    : "max-h-[220px] sm:max-h-[320px] md:max-h-none"
+                }`}
+              >
                 {playQuestions[currentQuestionIndex].shuffledOptions.map((option, sIdx) => {
                   const letterPrefix = ["A", "B", "C", "D"][sIdx];
                   const isSelected = userAnswers[currentQuestionIndex] === option.originalIndex;
@@ -635,7 +641,7 @@ export default function App() {
               </div>
 
               {/* Interactive question detailed logs list inside bounded panel */}
-              <div className="bg-white border border-slate-200 rounded-xl p-3 shadow-inner max-h-[380px] space-y-3 overflow-y-auto">
+              <div className="bg-white border border-slate-200 rounded-xl p-3 shadow-inner max-h-[380px] space-y-3 overflow-y-auto custom-scrollbar">
                 <h3 className="text-xs md:text-sm font-extrabold text-indigo-800 uppercase tracking-wider mb-2 sticky top-0 bg-white pb-1.5 border-b border-slate-100 z-10 flex items-center gap-1">
                   <TrendingUp className="w-4 h-4" /> Báo cáo chi tiết & Giải đáp câu hỏi
                 </h3>
@@ -758,14 +764,14 @@ export default function App() {
                   <span className="text-lg">💡</span> HƯỚNG DẪN GIẢI CHI TIẾT
                 </div>
 
-                <div className="border-t border-slate-100 pt-3 flex-grow overflow-y-auto pr-1">
+                <div className="border-t border-slate-100 pt-3 flex-grow overflow-y-auto pr-1 custom-scrollbar">
                   <p className="text-[10px] uppercase font-extrabold text-slate-400 mb-0.5">Câu hỏi:</p>
                   <div className="text-slate-800 font-bold mb-3 leading-relaxed bg-slate-50 p-2.5 rounded-xl border border-slate-100 text-xs sm:text-sm">
                     <MathText text={playQuestions[currentQuestionIndex].question} />
                   </div>
 
                   <p className="text-[10px] uppercase font-extrabold text-slate-400 mb-0.5">Phương pháp & các bước giải:</p>
-                  <div className="text-slate-700 font-semibold leading-relaxed bg-indigo-50/50 p-3 sm:p-4 rounded-xl border border-indigo-100/80 max-h-[180px] sm:max-h-[240px] overflow-y-auto text-xs sm:text-sm">
+                  <div className="text-slate-700 font-semibold leading-relaxed bg-indigo-50/50 p-3 sm:p-4 rounded-xl border border-indigo-100/80 max-h-[180px] sm:max-h-[240px] overflow-y-auto text-xs sm:text-sm custom-scrollbar">
                     <MathText text={playQuestions[currentQuestionIndex].explanation || ""} />
                   </div>
                 </div>
